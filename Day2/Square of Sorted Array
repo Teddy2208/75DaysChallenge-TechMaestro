@@ -1,0 +1,21 @@
+class Solution {
+    public int[] sortedSquares(int[] nums) {
+        int[] result=new int[nums.length];
+        int low=0;
+        int high=nums.length-1;
+        int pivotpoint=nums.length-1;
+        while(pivotpoint>=0){
+            if(Math.abs(nums[low])>Math.abs(nums[high])){
+                result[pivotpoint]=nums[low]*nums[low];
+                pivotpoint--;
+                low++;
+            }
+            else{
+                result[pivotpoint]=nums[high]*nums[high];
+                pivotpoint--;
+                high--;
+            }
+        }
+        return result;
+    }
+}
