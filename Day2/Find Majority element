@@ -1,0 +1,35 @@
+class Solution {
+    public int majorityElement(int[] nums) {
+//         HashMap<Integer,Integer> map=new HashMap<>();
+//         int res=0;
+//         for(int num:nums){
+//             if(!map.containsKey(num)){
+//                 map.put(num,1);
+//             }
+//             else{
+//                 map.put(num,map.get(num)+1);
+//             }
+//                if(map.get(num)>nums.length/2){
+//                res=num;
+//                break;
+//         }
+                      
+//         }
+        
+//         return res;
+        int count =0;
+        int element=0;
+        for(int i=0;i<nums.length;i++){
+            if(count==0){
+                element=nums[i];
+            }
+            if(element==nums[i]){
+                count+=1;
+            }
+            else{
+                count-=1;
+            }
+        }
+        return element;
+    }
+}
