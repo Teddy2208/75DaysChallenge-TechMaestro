@@ -1,0 +1,46 @@
+class RandomizedSet {
+   HashMap<Integer,Integer> vMap;
+   List<Integer> list;
+    public RandomizedSet() {
+        vMap=new HashMap<>();
+        list=new ArrayList<Integer>();
+        
+    }
+    
+    public boolean insert(int val) {
+        if(vMap.containsKey(val)) return false;
+        list.add(val);
+        vMap.put(val,list.size()-1);
+        
+        return true;
+    }
+    
+    public boolean remove(int val) {
+        if(vMap.containsKey(val)==false){
+            return false;
+            }
+        int ind=vMap.get(val);
+        Collections.swap(list,ind,list.size()-1);
+        int sw=list.get(ind);
+        vMap.put(sw,ind);
+        list.remove(list.size()-1);
+        vMap.remove(val);
+        return true;
+           
+    }
+    
+    public int getRandom() {
+       
+        Random r=new Random();
+        int ridx=r.nextInt(list.size());
+        return list.get(ridx);
+    }
+}
+
+/**
+ * Your RandomizedSet object will be instantiated and called as such:
+ * RandomizedSet obj = new RandomizedSet();
+ * boolean param_1 = obj.insert(val);
+ * boolean param_2 = obj.remove(val);
+ * int param_3 = obj.getRandom();
+ */
