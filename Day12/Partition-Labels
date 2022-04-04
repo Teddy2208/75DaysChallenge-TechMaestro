@@ -1,0 +1,29 @@
+class Solution {
+    public List<Integer> partitionLabels(String S) {
+      int[] charLastIndexMap = new int[26];
+        
+        for(int i=0; i<S.length(); i++){
+            charLastIndexMap[S.charAt(i)-'a'] = i;
+        }
+        
+        List<Integer> partitionLenList = new ArrayList<>();
+        
+        int partitionStartIndex = 0;
+        int partitionEndIndex = 0;
+        
+        for(int i=0; i<S.length(); i++){
+            
+            partitionEndIndex = Math.max(partitionEndIndex, charLastIndexMap[S.charAt(i)-'a']);
+            
+            if(i==partitionEndIndex){                                               
+                partitionLenList.add(partitionEndIndex-partitionStartIndex + 1);
+                
+                partitionStartIndex = i+1;                                           
+                partitionEndIndex = i+1;
+            }
+        }
+        
+        return partitionLenList;
+    }
+        
+    }
